@@ -1,11 +1,12 @@
 package br.com.iago.statistics.model;
 
+import br.com.iago.statistics.controller.TransactionController;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 @Getter
 @Setter
@@ -18,7 +19,11 @@ public class Transaction {
     private Double amount;
 
     @NotNull
-    private long timestamp;
+    private Long timestamp;
 
+    @JsonIgnore
+    public boolean dentroDoLimite() {
+        return System.currentTimeMillis() - timestamp <= TransactionController.SECONDS_LIMIT;
+    }
 
 }

@@ -1,6 +1,8 @@
 package br.com.iago.statistics.controller;
 
 import br.com.iago.statistics.model.Transaction;
+import br.com.iago.statistics.service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,11 +19,15 @@ public class TransactionController {
 
     public static final int SECONDS_LIMIT = 60000;
 
+    @Autowired
+    private TransactionService transactionService;
+
     @RequestMapping(value = "/transaction", method = RequestMethod.POST)
     public ResponseEntity<Void> createTransaction(@Valid @NotNull @RequestBody Transaction transaction){
         if((System.currentTimeMillis() - transaction.getTimestamp()) > SECONDS_LIMIT) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
+            transactionService.saveTransaction(transaction);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
