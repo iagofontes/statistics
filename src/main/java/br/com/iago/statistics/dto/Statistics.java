@@ -15,10 +15,10 @@ import java.util.stream.Collectors;
 @EqualsAndHashCode
 public class Statistics {
 
-    private Double sum;
-    private Double avg;
-    private Double max;
-    private Double min;
+    private Double sum = 0.0;
+    private Double avg = 0.0;
+    private Double max = 0.0;
+    private Double min = 0.0;
     private Long count;
 
     public Statistics() {}
