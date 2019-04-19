@@ -3,6 +3,8 @@ package br.com.iago.statistics.service;
 import br.com.iago.statistics.comparator.TransactionTimestampComparator;
 import br.com.iago.statistics.dto.Statistics;
 import br.com.iago.statistics.model.Transaction;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
