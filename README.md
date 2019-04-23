@@ -24,3 +24,7 @@ digite o seguinte comando:
 
 Após este comando a engine do docker irá iniciar um container com a imagem da sua aplicação e com isso o serviço criado
 será exposto na porta 8085, conforme específicado no comando acima.
+
+## Documentação
+
+Para acessar a documentação do serviço, acesse o link: http://localhost:8080/swagger-ui.html
