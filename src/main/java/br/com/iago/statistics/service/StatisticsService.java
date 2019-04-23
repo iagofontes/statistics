@@ -14,7 +14,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 @Service
 public class StatisticsService {
 
-    private static final int INTERVALO_ATUALIZACAO_MILISSEG =  100000;
+    private static final int INTERVALO_ATUALIZACAO_MILISSEG =  10000;
     private static final int CAPACIDADE_LISTA =  100;
 
     private final PriorityBlockingQueue<Transaction> ultimasTransacoes =
