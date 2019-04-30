@@ -6,6 +6,7 @@ import br.com.iago.statistics.model.Transaction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ public class StatisticsService {
     @Getter
     private Statistics statistics = new Statistics(ultimasTransacoes);
 
-    @Scheduled(fixedRate = INTERVALO_ATUALIZACAO_MILISSEG)
-    private void limparTransacoesAntigas() {
+    @Scheduled(fixedDelay = INTERVALO_ATUALIZACAO_MILISSEG)
+    public void limparTransacoesAntigas() {
 //        remove da lista as transações com mais de 60 segundos
         while (!ultimasTransacoes.isEmpty() && !ultimasTransacoes.peek().dentroDoLimite()) {
             ultimasTransacoes.poll();
